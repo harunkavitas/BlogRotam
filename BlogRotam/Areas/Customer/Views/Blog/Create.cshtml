@@ -1,0 +1,58 @@
+﻿@model BlogRotam.Models.Blog
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4">
+
+        </div>
+    <div class="col-md-4">
+        <h4 class="text-success">Blog Rotam</h4>
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                Header
+                <input asp-for="Header" class="form-control" />
+                <span asp-validation-for="Header" class="text-danger"></span>
+            </div>
+            <div class="form-group" >
+                Article
+                
+                <textarea asp-for="Article" class="form-control"  rows="5" input/></textarea>
+                <span asp-validation-for="Article" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                Image
+                <input asp-for="Image" class="form-control" type="file" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            @if (User.IsInRole(Other.Role_Admin))
+           {
+               <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Check" /> @Html.DisplayNameFor(model => model.Check)
+                </label>
+            </div>
+           }
+ 
+            <div class="form-group">
+                Category
+                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-primary">List </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+            
+            
+
+

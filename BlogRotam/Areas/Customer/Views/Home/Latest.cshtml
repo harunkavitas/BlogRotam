@@ -1,0 +1,27 @@
+﻿@model IEnumerable<BlogRotam.Models.Blog>
+
+   
+    
+             <h3 style="color:red">Latest</h3>
+             <hr />
+          @foreach (var item in Model)
+        {
+      
+            <div class="card-group" style="width:300px;" >
+  <a asp-area="Customer" asp-controller="Home"  asp-action="Detail" asp-route-id="@item.Id"><img src="@item.Image" class="card-img-top" alt="..." style="height:250px; width:250px;"></a>
+  <div class="card-body">
+    <h5 class="card-title">@item.Header</h5>
+    
+    <a asp-action="Detail" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-primary">Read more..</a>
+    
+    <p class="card-text"><small class="text-muted"><i class="fa fa-clock-o" aria-hidden="true"></i> @item.Date.ToString("dd.MM.yyyy") | <i class="fa fa-eye" aria-hidden="true"></i> @item.Shows</small></p>
+ 
+   
+    
+  </div>
+</div>
+      
+        }
+        
+       
+       

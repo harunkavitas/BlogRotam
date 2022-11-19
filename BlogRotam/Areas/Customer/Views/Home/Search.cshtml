@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="6" class="p-2 text-muted" >Software</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="11" class="p-2 text-muted" >World</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="3" class="p-2 text-muted" >Technology</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="5" class="p-2 text-muted" >Coding</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="12" class="p-2 text-muted" >Design</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="10" class="p-2 text-muted" >Art</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="13" class="p-2 text-muted" >Politics</a>   
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="2" class="p-2 text-muted" >Science</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="8" class="p-2 text-muted" >Health</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="9" class="p-2 text-muted" >Food</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="4" class="p-2 text-muted" >Travel</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="14" class="p-2 text-muted" >Nature</a>
+        </nav>
+      </div>
+<div class="row">
+         <div class="col-md-8">
+            
+
+          @foreach (var item in Model)
+        {
+      
+            <div class="card-group" >
+  <a asp-area="Customer" asp-controller="Home"  asp-action="Detail" asp-route-id="@item.Id"><img src="@item.Image" class="card-img-top" alt="..." style="height:450px"></a>
+  <div class="card-body">
+    <h5 class="card-title">@item.Header</h5>
+    <p class="card-text">@item.Article</p>
+    <a asp-action="Detail" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-primary">Read more..</a>
+    <br />
+    
+   <p class="card-text"><small class="text-muted"><i class="fa fa-clock-o" aria-hidden="true"></i> @item.Date.ToString("dd.MM.yyyy") | <i class="fa fa-eye" aria-hidden="true"></i> @item.Shows</small></p>
+    
+  </div>
+</div>
+       
+ 
+    
+        }
+        
+               
+        
+       </div>
+       <div class="col-md-1"></div>
+       <div class="col-md-3">
+           <form class="d-flex" action="/Customer/Home/Search" role="search">
+        <input class="form-control me-2" name="q" type="search" placeholder="Arama" aria-label="Search">
+        <button class="btn" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+      <br />
+      
+      <partial name="Latest" />
+           </div>
+    </div>
+

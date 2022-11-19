@@ -1,0 +1,113 @@
+﻿@model BlogRotam.Models.Comment
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="6" class="p-2 text-muted" >Software</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="11" class="p-2 text-muted" >World</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="3" class="p-2 text-muted" >Technology</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="5" class="p-2 text-muted" >Coding</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="12" class="p-2 text-muted" >Design</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="10" class="p-2 text-muted" >Art</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="13" class="p-2 text-muted" >Politics</a>   
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="2" class="p-2 text-muted" >Science</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="8" class="p-2 text-muted" >Health</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="9" class="p-2 text-muted" >Food</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="4" class="p-2 text-muted" >Travel</a>
+          <a asp-action="CategoryDetails" asp-controller="Home" asp-route-id="14" class="p-2 text-muted" >Nature</a>
+        </nav>
+      </div>
+<div class="row"> 
+    <div class="col-md-8">
+        @if(@ViewBag.blog.Image==null){
+                    
+                }
+                else{
+                    <img src="@ViewBag.blog.Image" alt="..." style="height:500px; width:800px;" >
+                }
+        
+   </div>
+   <div class="col-md-1"></div>
+<div class="col-md-3">
+           <form class="d-flex" action="/Customer/Home/Search" role="search">
+        <input class="form-control me-2" name="q" type="search" placeholder="Arama" aria-label="Search">
+        <button class="btn" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+      
+      
+           </div>
+    <div class="col-md-8"> 
+        <br />
+@*<strong>Header</strong> *@
+           <form><strong>@ViewBag.blog.Header</strong> </form>
+
+    <br />
+
+    <form>@ViewBag.blog.Article </form>
+     <p class="card-text"><small class="text-muted"><i class="fa fa-clock-o" aria-hidden="true"></i> @ViewBag.Blog.Date.ToString("dd.MM.yyyy") | <i class="fa fa-eye" aria-hidden="true"></i> @ViewBag.Blog.Shows</small></p>
+    </div>
+</div>
+<br />
+
+<div class="row" >
+    <div class="col-md-8">
+        <br /> 
+        <form asp-action="GoComment" method="post">
+            
+       
+    <div class="col-md-8">
+        <div class="card">
+  <div class="card-header">
+    Comment
+  </div>
+  <div class="card-body" >
+      <div class="form-group" >
+                
+                
+                <textarea asp-for="Description" class="form-control" placeholder="What do you think ?"  rows="5" input/></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+    
+   <br />
+    
+    @if (User.Identity.IsAuthenticated)
+ {
+    <button type="submit" class="btn btn-primary">Comment</button>
+ } 
+ else 
+    {
+         <div class="alert alert-warning text-center">
+                    You must be <a asp-area="Identity"  asp-page="/Account/Login">logged</a> in to post a comment .
+                </div>
+    }
+  </div>
+  
+</div>
+</div>
+ 
+    
+   
+   </form>
+   <br />
+        @foreach (var item in ViewBag.cmt)
+        {
+            <div class="card">
+  <div class="card-header">
+    <img src="~/images/image/user.png" Width="50" height="50" />
+    <span>@item.ApplicationUser.Name </span> - <small> (@item.CommentDate.ToString("dd.MM.yyyy"))</small>
+  </div>
+  <div class="card-body" >
+      <div class="form-group" >
+              @item.Description
+            </div>
+         </div>
+         </div>
+        }
+        
+         
+    
+       
+    </div>
+</div>
