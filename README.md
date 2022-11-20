@@ -38,3 +38,17 @@
 | Microsoft.AspNetCore.Authentication.Google 5.0.12 | [@Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google/5.0.12) |
 | X.PagedList.Mvc.Core 8.4.3 | [@Pagging](https://www.nuget.org/packages/X.PagedList.Mvc.Core/8.4.3) |
 
+## Website Login
+##### for Admin 
+> * Email:asda@asda.com
+> * Password:User123*
+
+## Login Admin
+![a](ReadmeContent/AdminLogin.PNG)
+
+## Login User
+![b](ReadmeContent/UserLogin.PNG)
+
+## Login Default 
+![c](ReadmeContent/DefaultLogin.PNG)
+![d](ReadmeContent/DefaultLogin2.PNG)
