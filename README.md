@@ -11,5 +11,5 @@
 | Database  | Microsoft SQL Server Management Studio 2022  v18.11.1     |
 | REST API  | Swagger  |
 | Identity  | Microsoft Identity |
-| DEV       | Facebook developer & Google Console Developer |
+| Dev       | Facebook developer & Google Console Developer |
 
